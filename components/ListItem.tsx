@@ -22,7 +22,7 @@ const ListItem: React.FC<ListItemProps> = ({
 
   return (
       <button
-        onClick={onclick}
+        onClick={onClick}
         className="
           relative
           group
@@ -54,7 +54,7 @@ const ListItem: React.FC<ListItemProps> = ({
         <p className="font-medium truncate py-5">
           {name}
         </p>
-        <div 
+        <div
           className="
             absolute
             transition

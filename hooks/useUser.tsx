@@ -11,9 +11,7 @@ type UserContextType = {
     subscription: Subscription | null;
 }
 
-export const UserContext = createContext<UserContextType | undefined>((
-    undefined
-));
+export const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export interface Props {
     [propName: string]: any;
@@ -31,27 +29,21 @@ export const MyUserContextProvider = (props: Props) => {
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const [subscription, setSubscription] = useState<Subscription | null>(null);
 
-    const getUserDetails = async () => {supabase.from('users').select('*').single()}
-    const getSubscription = async () => 
-      {
-        supabase
+    const getUserDetails = async () => supabase.from('users').select('*').single()
+    const getSubscription = async () => supabase
         .from('subscriptions')
-        .select('*, prices(*. products)')
+        .select('*, prices(*, products)')
         .in(`status`, [`trialing`, `active`])
         .single();
-      }
-    
+
       useEffect(() => {
         if(user && !isLoadingData && !userDetails && !subscription)
         {
           setIsLoadingData(true);
           Promise.allSettled([getUserDetails(), getSubscription()]).then(
-            (results) => {
-              const userDetailsPromise = results[0];
-              const subscriptionPromise = results[1];
+            ([userDetailsPromise, subscriptionPromise]) => {
               if(userDetailsPromise.status === "fulfilled" && subscriptionPromise.status === "fulfilled"){
                 setUserDetails(userDetailsPromise.value.data as UserDetails);
-              
               }
 
               if(subscriptionPromise.status === "fulfilled"){
