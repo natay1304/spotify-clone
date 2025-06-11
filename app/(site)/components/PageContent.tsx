@@ -24,14 +24,16 @@ const PageContent: React.FC<PageContentProps> = ({
   return (
     <div
       className="
-      grid
-      gris-cols-2
-      sm:grid-cols-3
-      md:gris-cols-3
-      lg:grid-cols-4
-      xl:grid-cols-5
-      2xl:grid-cols-8gap-4
-      mt-4">
+        grid
+        gris-cols-2
+        sm:grid-cols-3
+        md:gris-cols-3
+        lg:grid-cols-4
+        xl:grid-cols-5
+        2xl:grid-cols-8
+        gap-4
+        mt-4
+      ">
       {
         songs.map((item) => (
           <SongItem
