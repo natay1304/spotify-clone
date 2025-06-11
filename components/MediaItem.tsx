@@ -5,7 +5,7 @@ import Image from "next/image";
 
 interface MediaItemProps {
   data: Song;
-  key: string;
+  //key: string;
   onClick?: (id: string) => void;
 }
 

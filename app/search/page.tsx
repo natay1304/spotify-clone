@@ -10,7 +10,7 @@ interface SearchProps{
 };
 
 const Search = async({searchParams} : SearchProps) => {
-  const songs = await getSongsByTitle(searchParams.title);
+  const songs = await getSongsByTitle(searchParams?.title);
   return (
     <div className="
       bg-neutral-900

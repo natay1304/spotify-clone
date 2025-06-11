@@ -2,7 +2,7 @@ import { forwardRef } from "react"
 import { twMerge } from "tailwind-merge";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface ButtonProps 
+interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 
@@ -10,10 +10,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((
     {
       className,
       children,
-      disable,
+      disabled,
       type ="button",
       ...props
-    }, ref) => 
+    }, ref) =>
       {
         return(
             <button
@@ -35,7 +35,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((
                 `,
               className
             )}
-            disabled={disable}
+            disabled={disabled}
             ref={ref}
             {...props}
             >
